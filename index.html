@@ -10,7 +10,12 @@
 
 				var vid = document.getElementById('shia-vid');
 				vid.addEventListener('play', function(){
-					vid.currentTime = Math.random() * vid.duration;
+					setTimeout(function(){
+						var randomTime = Math.random() * vid.duration;
+						console.log('video playing...', vid.duration, randomTime);
+						vid.currentTime = randomTime;	
+					}, 100);
+					
 				});
 
 				var seriously = new Seriously();
