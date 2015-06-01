@@ -1,0 +1,12 @@
+{
+  "name": "hollywood-actor-shia-labeouf",
+  "version": "0.0.1",
+  "homepage": "https://github.com/positlabs/hollywood-actor-shia-labeouf",
+  "authors": [
+    "Josh Beckwith <josh.beckwith@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "Seriously.js": "git@github.com:brianchirls/Seriously.js.git"
+  }
+}

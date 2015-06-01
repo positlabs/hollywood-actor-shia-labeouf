@@ -1,0 +1,72 @@
+<html>
+	<head>
+		
+		<script src="bower_components/Seriously.js/seriously.js"></script>
+		<script src="bower_components/Seriously.js/effects/seriously.chroma.js"></script>
+
+		<script>
+
+			window.addEventListener('load', function(){
+
+				var vid = document.getElementById('shia-vid');
+				vid.addEventListener('play', function(){
+					vid.currentTime = Math.random() * vid.duration;
+				});
+
+				var seriously = new Seriously();
+				var sourceVid = seriously.source(vid);
+				var chroma = seriously.effect('chroma');
+				chroma.screen = [
+					103/255,
+					180/255,
+					121/255,
+					1
+				];
+				chroma.weight = .2;
+				chroma.clipBlack = .3;
+				window.chroma = chroma;
+
+				console.log(chroma.inputs());
+				var target = seriously.target('#shia-canvas');
+
+				chroma.source = sourceVid;
+				target.source = chroma;
+
+				seriously.go();
+
+			});
+
+		</script>
+
+		<style>
+
+			body {
+				background: black;
+				margin: 0;
+				background-image: url('bg.jpg');
+				background-size: cover;
+			}
+
+			#shia-vid {
+				display: none;
+			}
+
+			#shia-canvas {
+				position: absolute;
+				bottom: 0; right: 0;
+				width: 450px;
+			}
+
+		</style>
+
+	</head>
+	<body>
+
+		<video id="shia-vid" autoplay loop>
+			<source src="shia.mp4" type="video/mp4" />
+			<source src="shia.webm" type="video/webm" />
+		</video>
+		<canvas id="shia-canvas" width="640" height="352"></canvas>
+
+	</body>
+</html>
