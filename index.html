@@ -10,11 +10,15 @@
 
 				var vid = document.getElementById('shia-vid');
 				vid.addEventListener('play', function(){
-					setTimeout(function(){
-						var randomTime = Math.random() * vid.duration;
-						console.log('video playing...', vid.duration, randomTime);
-						vid.currentTime = randomTime;	
-					}, 100);
+
+					var t = setInterval(function(){
+						if (vid.readyState > 0) {
+							var randomTime = Math.random() * vid.duration;
+							console.log('video playing...', vid.duration, randomTime);
+							vid.currentTime = randomTime;
+							clearInterval(t);
+						}
+					}, 50);
 					
 				});
 
@@ -29,7 +33,7 @@
 				];
 				chroma.weight = .2;
 				chroma.clipBlack = .3;
-				window.chroma = chroma;
+				// window.chroma = chroma;
 
 				console.log(chroma.inputs());
 				var target = seriously.target('#shia-canvas');
